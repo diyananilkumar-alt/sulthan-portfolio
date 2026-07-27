@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sulthan Ibrahim</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="spikk.jpeg">
     <!-- Bootstrap 4 ONLY -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Premium typography: serif display + geometric sans body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <!-- Header -->
@@ -19,8 +23,11 @@
             <img src="logo.jpg" alt="Logo" class="logo">
         </a>
         <!-- Mobile Button -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-label="Toggle navigation" aria-expanded="false">
             <span class="navbar-toggler-icon"></span>
+            <span class="toggler-icon top-bar"></span>
+            <span class="toggler-icon middle-bar"></span>
+            <span class="toggler-icon bottom-bar"></span>
         </button>
         <!-- Menu -->
         <div class="collapse navbar-collapse justify-content-end" id="navbarMenu">
@@ -95,31 +102,34 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
 
 
-<section id="home-section" style="padding-top: 5em; background-image: url('home-photo.png'); background-size: cover; background-position: center;
-  background-repeat: no-repeat; min-height: 100vh;">
-  <div class="col-md-6 text-center d-flex flex-column justify-content-center align-items-center">
-    <h1 class="text-white font-weight-bold display-3">
-      Leading UAE <br>
-      Businessman <br>
-      And Global  <br>
-      Entrepreneur.
-    </h1>
-      <a class="hero-btn" href="#portfolio-section">
-    Read Sulthan’s Story</a>
+<section id="home-section">
+  <div class="container home-inner">
+    <div class="row justify-content-start">
+      <div class="col-12 col-lg-7 text-left d-flex flex-column justify-content-center align-items-start reveal in-view">
+        <h1 class="text-white font-weight-bold">
+          Leading UAE <br>
+          Businessman <br>
+          And Global  <br>
+          Entrepreneur.
+        </h1>
+          <a class="hero-btn" href="#portfolio-section">
+        Read Sulthan’s Story</a>
+      </div>
+    </div>
   </div>
-</section> 
+</section>
 
-<section id="portfolio-section" style="padding-top: 1em; background-image: url('portfolio-bg.jpg'); background-size: cover; background-position: center;
-  background-repeat: no-repeat; min-height: 100vh;">
+<section id="portfolio-section">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-md-6 text-center">
+            <div class="col-md-6 text-center reveal">
                 <img src="portfolio-photo.png" alt="" class="img-fluid rounded-circle profile-img p-3">
             </div>
-            <div class="col-md-6 p-5" >
+            <div class="col-md-6 p-5 reveal reveal-delay-1" >
+                <span class="eyebrow">About</span>
                 <h1 class="port-heading gold-sparkle">SULTHAN IBRAHIM<br></h1>
                 <h2 class="text-brown">Entrepreneur | Investor <br> Public Relations Officer (PRO)</h2>
-                <p class="text-justify text-brown">Sulthan Ibrahim is a distinguished businessman, entrepreneur, Public Relations Officer, and HR professional based in the United Arab Emirates. Renowned for his strategic vision, leadership, and commitment to excellence, he has established a strong reputation for successfully managing government relations, corporate administration, human resources, and business operations across diverse industries.<br>
+                <p class="text-brown">Sulthan Ibrahim is a distinguished businessman, entrepreneur, Public Relations Officer, and HR professional based in the United Arab Emirates. Renowned for his strategic vision, leadership, and commitment to excellence, he has established a strong reputation for successfully managing government relations, corporate administration, human resources, and business operations across diverse industries.<br>
                 With extensive expertise in UAE government procedures, visa and labor regulations, regulatory compliance, and employee relations, Sulthan has consistently built strong partnerships with government authorities, corporate clients, and business stakeholders.<br>
                 Recognized for professionalism, integrity, innovation, and value-driven leadership, Sulthan Ibrahim has earned a respected reputation among the UAE's business community. He continues to build impactful enterprises, strengthen meaningful business relationships, and contribute to the region's growing economy through visionary leadership, corporate excellence, and a results-oriented approach.</p>
             
@@ -129,17 +139,18 @@
 </section>
 
 <section class="hero-section" id="enterprices-section">
-    <div class="hero-content">
+    <div class="hero-content reveal">
+        <span class="eyebrow center">Enterprises</span>
         <h1 class="blue-sparkle text-center">
             UAE
             BEETLE CLUB<br>
         </h1>
-        <p class="text-justify text-whitee font-weight-normal business-text text-center">
+        <p class="text-whitee font-weight-normal business-text text-center">
             UAE Beetle Club was founded from a dream that became reality in 2017, and officially joined the UAE Car Clubs Group in 2022, marking the beginning
             of its journey as one of the leading clubs in the UAE dedicated to both modern and classic Beetle cars <br>
             The club brings together a distinguished community of Beetle owners and enthusiasts who share a true passion for this legendary icon, globally known as "The People's Car" a car that continuesto hold its special place and growing popularity amongfans in the UAE and beyond.<br>
             UAE Beetle Club has maintained a strong presence and a clear footprint across various events while promoting brotherhood, passion, and belonging among its members.
-        <a href="https://www.instagram.com/sulthaanibrahim?igsh=MTJuMXV4N2MybWFrcA==" class="instagram-link" style="color: #17a2b8;" >@SULTHAANIBRAHIM</a>
+        <a href="https://www.instagram.com/sulthaanibrahim?igsh=MTJuMXV4N2MybWFrcA==" class="instagram-link" >@SULTHAANIBRAHIM</a>
         </p>    
     </div>
     <div class="hero-image">
@@ -147,18 +158,19 @@
     </div>
 </section>
 
-<section class="bg-white p-5" id="experience-section" style="padding-top: 1em; background-image: url('experiences-bg.jpg'); background-size: cover; background-position: center;
-  background-repeat: no-repeat; min-height: 100vh;">
+<section id="experience-section">
   <div class="container">
+    <div class="text-center reveal"><span class="eyebrow center">Ventures</span></div>
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-4 reveal">
         <a href="https://www.orangebedbath.com/" style="text-decoration: none;">
-                <div class="card h-100 p-3 text-center">
-                    <img src="orange-card.png"
-                        alt="" width="50" class="card-img-top mx-auto">
+                <div class="card h-100 text-center">
+                    <div class="icon-badge">
+                        <img src="orange-card.png" alt="" width="50">
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title" style="color: black;">ORANGE BED AND BATH</h5>
-                        <p class="card-text text-center" style="text-align: justify; color: #17a2b8;">
+                        <h5 class="card-title">ORANGE BED AND BATH</h5>
+                        <p class="card-text text-center">
                             Sales and Marketing Specialist
                         </p>
                     </div>
@@ -166,14 +178,15 @@
                 </a>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-4 reveal reveal-delay-1">
               <a href="https://shelby.me/" style="text-decoration: none;">
-                <div class="card h-100 p-3 text-center">
-                    <img src="shelby-card.png"
-                     alt="" width="50" class="card-img-top mx-auto">
+                <div class="card h-100 text-center">
+                    <div class="icon-badge">
+                        <img src="shelby-card.png" alt="" width="50">
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title" style="color: black;">SHELBY GENERAL TRADING</h5>
-                        <p class="card-text text-center" style="text-align: justify; color: #17a2b8;">
+                        <h5 class="card-title">SHELBY GENERAL TRADING</h5>
+                        <p class="card-text text-center">
                             Sales and Marketing Specialist
                         </p>
                     </div>
@@ -181,14 +194,15 @@
                 </a>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-4 reveal reveal-delay-2">
               <a href="https://www.instagram.com/sulthaanibrahim?igsh=MTJuMXV4N2MybWFrcA==" style="text-decoration: none;">
-                <div class="card h-100 p-3 text-center">
-                    <img src= "beetle-card.png"
-                     alt="" width="50" class="card-img-top mx-auto">
+                <div class="card h-100 text-center">
+                    <div class="icon-badge">
+                        <img src= "beetle-card.png" alt="" width="50">
+                    </div>
                     <div class="card-body">
-                        <h5 class="card-title" style="color: black;">UAE BEETLE CLUB</h5>
-                        <p class="card-text text-center" style="text-align: justify; color: #17a2b8;">
+                        <h5 class="card-title">UAE BEETLE CLUB</h5>
+                        <p class="card-text text-center">
                             @SULTHAANIBRAHIM
                         </p>
                     </div>
@@ -198,17 +212,15 @@
     </div>
   </div>
 </section>
-<section id="contact-section" style="padding-top: 1em; background-image: url('contact-bg.jpg'); background-size: cover; background-position: center;
-  background-repeat: no-repeat; min-height: 100vh;">
+<section id="contact-section">
   <!-- Contact 6 - Bootstrap Brain Component -->
-<section class="py-3 py-md-5 py-xl-8">
-  <div class="container">
+  <div class="container reveal">
     <div class="row">
       <div class="col-12">
-        <div class="card border border-dark rounded shadow-sm overflow-hidden  card-bg">
+        <div class="card border border-dark rounded shadow-sm overflow-hidden card-bg">
           <div class="card-body p-0">
             <div class="row gy-3 gy-md-4 gy-lg-0">
-              <div class="col-12 col-lg-6 bsb-overlay background-position-center background-size-cover" style="--bsb-overlay-opacity: 0.7; background-image: url('./assets/img/contact-img-1.webp');">
+              <div class="col-12 col-lg-6 bsb-overlay">
                 <div class="row align-items-lg-center justify-content-center h-100">
                   <div class="col-11 col-xl-10">
                     <div class="contact-info-wrapper py-4 py-xl-5">
@@ -339,7 +351,6 @@
       </div>
     </div>
   </div>
-</section>
 </section>
 <footer class="bg-dark text-white py-4">
     <div class="container text-center">
