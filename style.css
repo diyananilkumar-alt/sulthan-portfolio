@@ -92,12 +92,95 @@ a {
 .reveal-delay-1.in-view { transition-delay: 0.12s; }
 .reveal-delay-2.in-view { transition-delay: 0.24s; }
 
+/* Side-slide variant of .reveal, used for the enterprises car photo */
+.reveal.reveal-x {
+    transform: translateX(60px);
+    transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+}
+.reveal.reveal-x.in-view {
+    transform: translateX(0);
+}
+
 @media (prefers-reduced-motion: reduce) {
     .reveal, .reveal.in-view {
         opacity: 1;
         transform: none;
         transition: none;
     }
+}
+
+/* ---------- Sparkle text effect ---------- */
+/* Shimmering gradient text + twinkling highlight points. Used on headline
+   moments (hero name, section titles) for a premium, alive feel. */
+.gold-sparkle,
+.blue-sparkle {
+    position: relative;
+    background-image: linear-gradient(
+        100deg,
+        var(--gold) 0%,
+        var(--gold) 38%,
+        #fff6dd 48%,
+        var(--gold-bright) 54%,
+        var(--gold) 64%,
+        var(--gold) 100%
+    );
+    background-size: 250% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--gold);
+    animation: sparkleShift 5s linear infinite;
+}
+
+.blue-sparkle {
+    background-image: linear-gradient(
+        100deg,
+        var(--cream) 0%,
+        var(--cream) 38%,
+        var(--gold-bright) 48%,
+        #ffffff 54%,
+        var(--cream) 64%,
+        var(--cream) 100%
+    );
+    background-size: 250% auto;
+    color: var(--cream);
+}
+
+@keyframes sparkleShift {
+    0%   { background-position: 0% center; }
+    100% { background-position: -250% center; }
+}
+
+/* Two small twinkling points that drift near the text */
+.gold-sparkle::before,
+.gold-sparkle::after,
+.blue-sparkle::before,
+.blue-sparkle::after {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--gold-bright);
+    border-radius: 50%;
+    box-shadow: 0 0 8px 2px rgba(232, 199, 120, 0.85);
+    opacity: 0;
+    animation: twinkle 3.2s ease-in-out infinite;
+    pointer-events: none;
+}
+.gold-sparkle::before { top: -6px; left: 2px; animation-delay: 0.2s; }
+.gold-sparkle::after { bottom: 4px; left: 45%; width: 4px; height: 4px; animation-delay: 1.6s; }
+.blue-sparkle::before { top: -4px; left: 42%; animation-delay: 0.5s; }
+.blue-sparkle::after { bottom: 2px; left: 58%; width: 4px; height: 4px; animation-delay: 2s; }
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.4); }
+    50%      { opacity: 1; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gold-sparkle, .blue-sparkle { animation: none; }
+    .gold-sparkle::before, .gold-sparkle::after,
+    .blue-sparkle::before, .blue-sparkle::after { animation: none; opacity: 0; }
 }
 
 /* ==========================================================================
@@ -530,7 +613,48 @@ a {
     position: absolute;
     inset: 0;
     background: linear-gradient(90deg, rgba(5,5,5,0.35), rgba(5,5,5,0) 25%);
+    z-index: 2;
+    pointer-events: none;
 }
+
+/* Animated diagonal light sweep — passes across the photo every few seconds */
+.hero-image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 35%;
+    height: 100%;
+    background: linear-gradient(115deg, transparent, rgba(232, 199, 120, 0.16), transparent);
+    transform: skewX(-18deg);
+    z-index: 3;
+    pointer-events: none;
+    animation: lightSweep 7s ease-in-out infinite;
+}
+@keyframes lightSweep {
+    0%   { left: -60%; }
+    32%  { left: 130%; }
+    100% { left: 130%; }
+}
+
+/* Wrapper that gives the car a gentle, continuous idle motion */
+.car-drift {
+    width: 106%;
+    height: 106%;
+    position: absolute;
+    top: -3%;
+    left: -3%;
+    z-index: 1;
+    animation: carDrift 8s ease-in-out infinite;
+    will-change: transform;
+}
+@keyframes carDrift {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+    25%      { transform: translate3d(-1.2%, -1.6%, 0) rotate(-0.4deg); }
+    50%      { transform: translate3d(0.8%, 1%, 0) rotate(0.3deg); }
+    75%      { transform: translate3d(-0.6%, -0.8%, 0) rotate(-0.2deg); }
+}
+
 .hero-image img {
     width: 100%;
     height: 100%;
@@ -541,23 +665,29 @@ a {
     transform: scale(1.06);
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .car-drift { animation: none; }
+    .hero-image::before { animation: none; display: none; }
+}
+
 @media (max-width: 991px) {
     .hero-section {
         flex-direction: column;
     }
     .hero-content,
     .hero-image {
-        flex: 100%;
         max-width: 100%;
         width: 100%;
     }
     .hero-content {
+        flex: 1 1 auto;
         padding: 56px 28px 44px;
         align-items: center;
         text-align: center;
         order: 2;
     }
     .hero-image {
+        flex: 0 0 320px;
         height: 320px;
         order: 1;
     }
@@ -588,16 +718,42 @@ a {
 }
 
 #experience-section .card {
-    background: var(--ink-panel);
+    background: linear-gradient(155deg, var(--ink-panel) 0%, #1c1c20 55%, var(--ink-panel) 100%);
     border: 1px solid var(--line) !important;
     border-radius: 10px;
     padding: 3rem 1.75rem !important;
-    transition: transform 0.4s var(--ease), border-color 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s var(--ease), border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
 }
 #experience-section .card:hover {
     transform: translateY(-10px);
     border-color: var(--gold-dim) !important;
     box-shadow: var(--shadow-lift);
+    background: linear-gradient(155deg, #1a1a1e 0%, #212125 55%, #1a1a1e 100%);
+}
+
+/* One-shot diagonal shine that sweeps across the card on hover */
+#experience-section .card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(115deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.75s var(--ease);
+    pointer-events: none;
+    z-index: 1;
+}
+#experience-section .card:hover::after {
+    left: 125%;
+}
+
+#experience-section .card-body {
+    position: relative;
+    z-index: 2;
 }
 
 .icon-badge {
@@ -610,15 +766,37 @@ a {
     align-items: center;
     justify-content: center;
     margin: 0 auto 22px;
+    position: relative;
+    z-index: 2;
     transition: background 0.4s ease, transform 0.4s var(--ease);
 }
 #experience-section .card:hover .icon-badge {
     background: rgba(201, 162, 77, 0.16);
     transform: scale(1.06);
 }
+
+/* Slow radar-style pulse ring around each icon, staggered per card */
+.icon-badge::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid var(--gold-dim);
+    animation: badgePulse 2.8s ease-out infinite;
+    pointer-events: none;
+}
+#experience-section .col-md-4:nth-child(2) .icon-badge::after { animation-delay: 0.65s; }
+#experience-section .col-md-4:nth-child(3) .icon-badge::after { animation-delay: 1.3s; }
+@keyframes badgePulse {
+    0%   { transform: scale(1); opacity: 0.55; }
+    100% { transform: scale(1.6); opacity: 0; }
+}
+
 .icon-badge img {
     width: 40px !important;
     height: auto;
+    position: relative;
+    z-index: 1;
 }
 
 #experience-section .card-title {
@@ -630,6 +808,20 @@ a {
     margin-bottom: 10px;
 }
 
+/* Small arrow that eases in to hint these cards are links */
+#experience-section .card-title::after {
+    content: " \2197";
+    display: inline-block;
+    color: var(--gold);
+    opacity: 0;
+    transform: translate(-4px, 2px);
+    transition: all 0.35s var(--ease);
+}
+#experience-section .card:hover .card-title::after {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
 #experience-section .card-text {
     color: var(--gold) !important;
     font-size: 12px;
@@ -637,6 +829,10 @@ a {
     letter-spacing: 0.14em;
     text-transform: uppercase;
     text-align: center !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .icon-badge::after { animation: none; }
 }
 
 /* ==========================================================================
